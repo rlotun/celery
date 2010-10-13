@@ -71,6 +71,7 @@ class Schedule(object):
                 eta = mktime(eta.timetuple())
             except OverflowError:
                 self.handle_error(sys.exc_info())
+                return
         eta = eta or time()
         heapq.heappush(self._queue, (eta, priority, entry))
         return entry
